@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { font-family: 'DM Sans', sans-serif; color: #10233f; background: #fff; font-synthesis: none; text-rendering: optimizeLegibility; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+h1,h2,h3,h4 { font-family: 'Manrope', sans-serif; }
+::selection { background: #b8e7ff; color: #071b36; }
+.container-wide { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+.hero-grid { background-image: radial-gradient(circle at 75% 25%, rgba(51,155,232,.22), transparent 35%), linear-gradient(120deg, #071b36 0%, #0b2c51 60%, #0b3b67 100%); }
+.grid-dots { background-image: radial-gradient(rgba(255,255,255,.18) 1px, transparent 1px); background-size: 18px 18px; }
+@media (max-width: 640px) { .container-wide { width: min(100% - 32px, 1160px); } }
