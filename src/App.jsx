@@ -34,6 +34,16 @@ function App() {
   const update = (e) => setForm({ ...form, [e.target.name]: e.target.value })
   const submit = (e) => {
     e.preventDefault()
+    const { name, phone, service, location, date, details } = form
+    const subject = `New aircon service request from ${name}`
+    const body =
+      `Name: ${name}\n` +
+      `Phone: ${phone}\n` +
+      `Service: ${service}\n` +
+      `Location: ${location}\n` +
+      `Date: ${date || 'Not specified'}\n\n` +
+      `Details:\n${details || 'None provided'}`
+    window.location.href = `mailto:raypanganiban0825@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     setSent(true)
   }
   const closeMenu = () => setMenuOpen(false)
@@ -43,7 +53,7 @@ function App() {
       <div className="bg-[#06172e] text-white">
         <div className="container-wide flex min-h-10 items-center justify-between gap-4 text-xs sm:text-sm">
           <p className="flex items-center gap-2 text-blue-100"><Zap size={14} className="text-sky-300" /> Comfort you can count on, all year round.</p>
-          <a href="tel:+639171234567" className="hidden items-center gap-2 font-semibold hover:text-sky-300 sm:flex"><Phone size={14} /> +63 917 123 4567</a>
+          <a href="tel:+639564804965" className="hidden items-center gap-2 font-semibold hover:text-sky-300 sm:flex"><Phone size={14} /> +63 956 480 4965</a>
         </div>
       </div>
 
@@ -144,7 +154,7 @@ function App() {
         <section id="booking" className="py-20 sm:py-24">
           <div className="container-wide grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
             <div><p className="text-xs font-extrabold uppercase tracking-[.2em] text-sky-700">Let's get you comfortable</p><h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0a2343] sm:text-4xl">Book a service or request a quote.</h2><p className="mt-5 leading-7 text-slate-500">Tell us a little about your aircon concern. Our team can follow up to discuss availability and next steps.</p>
-              <div className="mt-8 space-y-5"><a href="tel:+639171234567" className="flex items-center gap-4 rounded-2xl border border-slate-200 p-4 transition hover:border-sky-300"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700"><Phone size={22}/></span><div><p className="text-xs text-slate-400">Call us directly</p><p className="mt-1 font-extrabold text-[#0a2343]">+63 917 123 4567</p></div></a><div className="flex items-center gap-4 rounded-2xl border border-slate-200 p-4"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700"><CalendarDays size={22}/></span><div><p className="text-xs text-slate-400">Service schedule</p><p className="mt-1 font-extrabold text-[#0a2343]">By appointment</p></div></div><div className="flex items-center gap-4 rounded-2xl border border-slate-200 p-4"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700"><Building2 size={22}/></span><div><p className="text-xs text-slate-400">Who we serve</p><p className="mt-1 font-extrabold text-[#0a2343]">Homes, offices & small businesses</p></div></div></div>
+              <div className="mt-8 space-y-5"><a href="tel:+639564804965" className="flex items-center gap-4 rounded-2xl border border-slate-200 p-4 transition hover:border-sky-300"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700"><Phone size={22}/></span><div><p className="text-xs text-slate-400">Call us directly</p><p className="mt-1 font-extrabold text-[#0a2343]">+63 956 480 4965</p></div></a><div className="flex items-center gap-4 rounded-2xl border border-slate-200 p-4"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700"><CalendarDays size={22}/></span><div><p className="text-xs text-slate-400">Service schedule</p><p className="mt-1 font-extrabold text-[#0a2343]">By appointment</p></div></div><div className="flex items-center gap-4 rounded-2xl border border-slate-200 p-4"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700"><Building2 size={22}/></span><div><p className="text-xs text-slate-400">Who we serve</p><p className="mt-1 font-extrabold text-[#0a2343]">Homes, offices & small businesses</p></div></div></div>
             </div>
             <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-9">
               {sent ? <div className="py-12 text-center"><span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600"><Check size={32}/></span><h3 className="mt-5 text-2xl font-extrabold text-[#0a2343]">Thanks, {form.name || 'there'}!</h3><p className="mx-auto mt-3 max-w-md leading-7 text-slate-500">Your details have been captured in this demo. Connect the form to your email, CRM, or booking system to receive real requests.</p><button onClick={()=>{setSent(false);setForm({name:'',phone:'',service:'Aircon Repair',location:'',date:'',details:''})}} className="mt-6 rounded-full bg-sky-600 px-6 py-3 font-bold text-white hover:bg-sky-700">Send another request</button></div> :
@@ -162,7 +172,7 @@ function App() {
       </main>
 
       <footer className="bg-[#06172e] py-10 text-white">
-        <div className="container-wide"><div className="flex flex-col justify-between gap-8 border-b border-white/10 pb-8 sm:flex-row sm:items-center"><a href="#home" className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500 text-white"><Wind size={25}/></span><span><span className="block font-['Manrope'] text-lg font-extrabold">CoolBreeze</span><span className="block text-[10px] font-bold uppercase tracking-[.2em] text-blue-200">Aircon Services</span></span></a><div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-blue-100"><a className="hover:text-white" href="#services">Services</a><a className="hover:text-white" href="#pricing">Pricing</a><a className="hover:text-white" href="#reviews">Reviews</a><a className="hover:text-white" href="#booking">Contact</a></div><a href="tel:+639171234567" className="inline-flex items-center gap-2 font-bold text-sky-300 hover:text-white"><Phone size={16}/> +63 917 123 4567</a></div><div className="flex flex-col justify-between gap-3 pt-6 text-xs text-blue-200/70 sm:flex-row"><p>© {new Date().getFullYear()} CoolBreeze Aircon Services. All rights reserved.</p><p>Designed for comfort. Built with care.</p></div></div>
+        <div className="container-wide"><div className="flex flex-col justify-between gap-8 border-b border-white/10 pb-8 sm:flex-row sm:items-center"><a href="#home" className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500 text-white"><Wind size={25}/></span><span><span className="block font-['Manrope'] text-lg font-extrabold">CoolBreeze</span><span className="block text-[10px] font-bold uppercase tracking-[.2em] text-blue-200">Aircon Services</span></span></a><div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-blue-100"><a className="hover:text-white" href="#services">Services</a><a className="hover:text-white" href="#pricing">Pricing</a><a className="hover:text-white" href="#reviews">Reviews</a><a className="hover:text-white" href="#booking">Contact</a></div><a href="tel:+639564804965" className="inline-flex items-center gap-2 font-bold text-sky-300 hover:text-white"><Phone size={16}/> +63 956 480 4965</a></div><div className="flex flex-col justify-between gap-3 pt-6 text-xs text-blue-200/70 sm:flex-row"><p>© {new Date().getFullYear()} CoolBreeze Aircon Services. All rights reserved.</p><p>programmer Ray Panganiban</p></div></div>
       </footer>
     </div>
   )
